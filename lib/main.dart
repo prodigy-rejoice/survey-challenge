@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:survey_challenge/display_questions_screen.dart';
-import 'package:survey_challenge/splash_screen.dart';
-import 'package:survey_challenge/register_screen.dart';
-import 'package:survey_challenge/welcome.dart';
+import 'package:survey_challenge/screens/display_info_screen.dart';
+import 'package:survey_challenge/screens/display_survey.dart';
+import 'package:survey_challenge/screens/instruction_screen.dart';
+import 'package:survey_challenge/screens/review_screen.dart';
+import 'package:survey_challenge/screens/register_screen.dart';
+import 'package:survey_challenge/screens/splash_screen.dart';
+import 'package:survey_challenge/screens/welcome.dart';
 
 void main() => runApp(
       const MyApp(),
@@ -31,8 +34,17 @@ class _MyAppState extends State<MyApp> {
           return const Welcome();
         },
         '/questions': (context) {
-          return const DisplayQuestions();
+          return const ShowQuestions();
         },
+        '/survey': (context) {
+          return const ShowSurvey();
+        },
+        '/ready': (context) {
+          return const Ready();
+        },
+        // '/result': (context) {
+        //   return const ResultPage();
+        // }
       },
     );
   }

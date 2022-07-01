@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:survey_challenge/register_screen.dart';
-import 'package:survey_challenge/text_styles.dart';
+
+import '../constants/decoration.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,12 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5)).then(
-      (value) => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const Register(),
-        ),
-      ),
+      (value) => Navigator.pushNamed(context, '/register'),
     );
     super.initState();
   }
@@ -30,10 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            child: const Padding(
-              padding: EdgeInsets.all(10),
-            ),
+          const Padding(
+            padding: EdgeInsets.all(10),
           ),
           Row(
             children: [
