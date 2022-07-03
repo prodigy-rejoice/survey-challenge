@@ -4,19 +4,27 @@ import 'package:google_fonts/google_fonts.dart';
 const kTextFieldStyle = InputDecoration(
   filled: true,
   fillColor: Colors.white,
-  hintText: 'Enter your email',
+  hintText: 'Enter your email or username',
+  labelText: 'Username',
   hintStyle: TextStyle(
     color: Colors.grey,
   ),
-
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(
+        15,
+      ),
     ),
-
-    borderSide: BorderSide(color: Colors.red),
   ),
-
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.blue,
+      width: 2.0,
+    ),
+    borderRadius: BorderRadius.all(
+      Radius.circular(20.0),
+    ),
+  ),
 );
 
 final titleStyle = GoogleFonts.poppins(
@@ -61,3 +69,13 @@ const kInstructionStyle = TextStyle(
   fontWeight: FontWeight.w500,
   color: Colors.blueAccent,
 );
+
+const kReviewPageText = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w400,
+);
+const kBottomButton = TextStyle(
+  fontSize: 25,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+); //TextStyle

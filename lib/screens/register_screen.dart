@@ -2,8 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../constants/decoration.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  bool hidePassword = true;
+
+  void changePasswordDisplay() {
+    setState(() {
+      if (hidePassword == true) {
+        hidePassword = false;
+      } else {
+        hidePassword = true;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,35 +42,52 @@ class Register extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 12.0),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
                       child: Text(
                         'It\'s your first time!',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
                         'Please fill in your details and register',
-                        style: titleStyle.copyWith(
-                            fontSize: 13, color: Colors.black54),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontSize: 16.0),
                       ),
                     ),
                     const Expanded(
                       child: TextField(
                         decoration: kTextFieldStyle,
-                        cursorColor: Colors.blueAccent,
+                        cursorColor: Colors.green,
                       ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
                     ),
                     Expanded(
                       child: TextField(
+                        obscureText: hidePassword,
+                        enableSuggestions: false,
+                        autocorrect: false,
                         decoration: kTextFieldStyle.copyWith(
-                            hintText: 'Enter your name'),
-                        cursorColor: Colors.blueAccent,
+                          hintText: 'Enter your password',
+                          labelText: 'Password',
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              changePasswordDisplay();
+                            },
+                            child: Icon(
+                              hidePassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                            ),
+                          ),
+                        ),
+                        cursorColor: Colors.green,
                       ),
                     ),
                     const SizedBox(
@@ -126,18 +160,28 @@ class Register extends StatelessWidget {
                             context: context,
                             title: "LOGIN",
                             content: Column(
-                              children: const <Widget>[
-                                TextField(
+                              children: [
+                                const TextField(
                                   decoration: InputDecoration(
                                     icon: Icon(Icons.account_circle),
                                     labelText: 'Username',
                                   ),
                                 ),
                                 TextField(
-                                  obscureText: true,
+                                  obscureText: hidePassword,
                                   decoration: InputDecoration(
-                                    icon: Icon(Icons.lock),
+                                    icon: const Icon(Icons.lock),
                                     labelText: 'Password',
+                                    suffixIcon: InkWell(
+                                      onTap: () {
+                                        changePasswordDisplay();
+                                      },
+                                      child: Icon(
+                                        hidePassword
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],

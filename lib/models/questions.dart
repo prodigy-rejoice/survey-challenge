@@ -3,7 +3,7 @@ class Question {
   late List<String> options;
 
   Question({
-    required this.questionText,
+    this.questionText,
     required this.options,
   });
 }
